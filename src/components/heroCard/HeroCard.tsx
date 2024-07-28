@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import characterModel from "../../models/character.model"
 
 interface PropTypes {
@@ -6,12 +7,31 @@ interface PropTypes {
 
 const HeroCard = (props: PropTypes) => {
   return (
-    <div className="heroCard">
-      <div className="heroCardWrapper">
+    <div className="seriesCard">
+      <div className="cardWrapper">
         <div className="heroImage">
-          <img src={props.character.image} alt={props.character.name} key={props.character.id} />
+          <img src={props.character.image} alt={props.character.title} key={props.character.id} />
         </div>
-        <div className="heroName">{props.character.name}</div>
+
+        <div className="dataWrapper">
+          <p className="textYear">{props.character.startYear} - {props.character.endYear}</p>
+
+          <p className="titleSeries">{props.character.title}</p>
+
+          <p className="textData">Tipo: {props.character.type}</p>
+
+          <p className="textData">Comics: {props.character.comics}</p>
+
+          <p className="textData">Creadores: {props.character.creators}</p>
+
+          <p className="textData">Personajes: {props.character.characters}</p>
+
+          <Link to='/Detail'>
+            <button type="button" className="btnDetails">Ver detalles</button>
+          </Link>
+
+        </div>
+
       </div>
     </div>  )
 }

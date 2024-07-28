@@ -1,6 +1,6 @@
 const Detail = () => {
   return (
-    <div>Detail</div>
+    <div className="textData">Detail</div>
   )
 }
 

@@ -17,8 +17,14 @@ const Home = () => {
       response.data.data.results.forEach( (item:any) => {
         heroesArray.push({
           id: item.id,
+          comics: item.comics.available,
+          creators: item.creators.available,
+          characters: item.characters.available,
           image: `${item.thumbnail.path}/portrait_fantastic.${item.thumbnail.extension}`,
-          name: item.name
+          title: item.title,
+          type: item.type,
+          startYear: item.startYear,
+          endYear: item.endYear,
         })
       })
 
@@ -43,7 +49,7 @@ const Home = () => {
       <Header />
       <div className="scrollWrapper">
         <div className="cardArea">
-          {loading && <p>Cargando...</p>}
+          {loading && <img src="./spinner.svg" />}
 
           {
             !loading && characterList.length >0 && characterList.map( (item:characterModel, id:number) => {

@@ -1,7 +1,9 @@
 const Header = () => {
   return (
     <header className="marvelHeader">
-      Marvel app
+      <p className="titleApp">
+        Marvel app
+      </p>
     </header>
   )
 }
