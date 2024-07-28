@@ -8,11 +8,10 @@ const Home = () => {
 
   const [characterList, setCharacterList] = useState<characterModel[]>([])
   const [loading, setLoading] = useState<boolean>(false)
-  const [error, setError] = useState<boolean>(false)
 
   const getCharacters = async () => { 
-    const heroesArray:Array<characterModel> = []
     setLoading(true)
+    const heroesArray:Array<characterModel> = []
 
     await TestingService().then((response) => {
       response.data.data.results.forEach( (item:any) => {
@@ -25,10 +24,12 @@ const Home = () => {
 
       setCharacterList(heroesArray)
 
-    }).catch((error:any) => {
+    }).catch((error) => {
       console.log("error: ", error)
     })
-    setLoading(false)
+    .finally(() => {
+      setLoading(false)
+    })
   }
 
   useEffect(() => {
@@ -42,15 +43,22 @@ const Home = () => {
       <Header />
       <div className="scrollWrapper">
         <div className="cardArea">
-            {
-              characterList.length >0 && characterList.map( (item:characterModel, id:number) => {
-                return (
-                  <div className="cardAreaColumn" key={id} >
-                    <HeroCard key={id} character={item} />
-                  </div>
-                )
-              })
-            }
+          {loading && <p>Cargando...</p>}
+
+          {
+            !loading && characterList.length >0 && characterList.map( (item:characterModel, id:number) => {
+              return (
+                <div className="cardAreaColumn" key={id} >
+                  <HeroCard key={id} character={item} />
+                </div>
+              )
+            })
+          }
+          {
+            !loading && characterList.length === 0 && <p>No hay personajes</p>
+          }
+          {!loading && <p>Se demora la API de Marvel en cargar</p>}
+
 
         </div>
       </div>
