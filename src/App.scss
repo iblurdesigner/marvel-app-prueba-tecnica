@@ -1,0 +1,64 @@
+@import './scss/abstracts/mixins';
+
+.card {
+  @include marvel_card();
+}
+
+.marvelHeader {
+  @include headerM();
+}
+
+.scrollWrapper {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  margin-top: 40px;
+  width: 100%;
+  overflow: auto;
+  height: calc(100vh - 150px);
+}
+
+.cardArea {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-gap: 30px;
+}
+
+.cardAreaColumn {
+  flex: 1;
+  border-radius: 3px;
+  padding: 20px;
+  align-items: center;
+  position: relative;
+}
+
+.heroCard {
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+  cursor: pointer;
+  display: flex;
+  border-radius: 6px;
+  width: 100%;
+  flex-direction: column;
+}
+
+.heroCardWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.heroName {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 10px;
+}
+
+.heroImage {
+  margin-right: 20px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+}
