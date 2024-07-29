@@ -2,9 +2,14 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.scss'
 import { AxiosInterceptor } from './interceptors/axios.interceptor.tsx'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 AxiosInterceptor()
 
+const queryClient = new QueryClient()
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <App />
+	<QueryClientProvider client={queryClient} >
+		<App />
+	</QueryClientProvider>
 )

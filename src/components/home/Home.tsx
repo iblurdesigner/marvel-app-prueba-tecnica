@@ -3,8 +3,11 @@ import HeroCard from "../heroCard/HeroCard"
 import characterModel from "../../models/character.model"
 import { useEffect, useState } from "react"
 import { TestingService } from "../../services/testing.service"
+import { useSeriesData } from "../../services/queries"
 
 const Home = () => {
+
+  const seriesData = useSeriesData()
 
   const [characterList, setCharacterList] = useState<characterModel[]>([])
   const [loading, setLoading] = useState<boolean>(false)
@@ -63,7 +66,7 @@ const Home = () => {
           {
             !loading && characterList.length === 0 && <p>No hay personajes</p>
           }
-          {!loading && <p>Se demora la API de Marvel en cargar</p>}
+          {!seriesData.isLoading && <p>Se demora la API de Marvel en cargar</p>}
 
 
         </div>

@@ -26,7 +26,7 @@ const HeroCard = (props: PropTypes) => {
 
           <p className="textData">Personajes: {props.character.characters}</p>
 
-          <Link to='/Detail'>
+          <Link to={`/detail/${props.character.id}`} >
             <button type="button" className="btnDetails">Ver detalles</button>
           </Link>
 

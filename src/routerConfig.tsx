@@ -1,4 +1,4 @@
-import { Detail, Home } from "./pages";
+import { Detail, History, Home } from "./pages";
 
 export const routes = [
     {
@@ -7,8 +7,13 @@ export const routes = [
         name: "Home",
     },
     {
-        path: "/detail",
+        path: "/detail/:id",
         element: <Detail />,
-        name: "Detail",
+        name: "Detalle",
+    },
+    {
+        path: "/history",
+        element: <History />,
+        name: "Historico",
     }
 ]
